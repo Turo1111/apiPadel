@@ -5,5 +5,5 @@
 .env.test.local
 .env.production.local
 
-
+/dist
 

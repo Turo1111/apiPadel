@@ -1,5 +1,4 @@
 import { JwtPayload, sign, verify } from 'jsonwebtoken'
-import { Types } from 'mongoose'
 import { User } from '../interfaces/auth.interface'
 import UserModel from '../models/user.model'
 

@@ -1,4 +1,4 @@
-import { Types } from 'mongoose'
+
 import { Auth, AuthWithToken, User } from '../interfaces/auth.interface'
 import UserModel from '../models/user.model'
 import { encrypt, verified } from '../utils/bcrypt.handle'
