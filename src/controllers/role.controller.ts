@@ -35,10 +35,6 @@ const getItems = async ({ body }: RequestExt, res: Response): Promise<void> => {
   try {
     const { input, skip, limit } = body
 
-    console.log('input', input)
-    console.log('skip', skip)
-    console.log('limit', limit) 
-
     if (input !== undefined) {
       const response = await getRoleSearch(input)
       res.send(response)

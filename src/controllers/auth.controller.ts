@@ -6,7 +6,6 @@ import { emitSocket } from '../socket'
 
 const registerCtrl = async ({ body }: Request, res: Response): Promise<void> => {
   try {
-    console.log('body', body)
     const responseUser = await registerNewUser({...body, role: new Types.ObjectId(body.role)})
 
     emitSocket('user', {

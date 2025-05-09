@@ -37,8 +37,6 @@ export function emitSocket (type: string, params: Object) {
 				fechaHora: fechaHora
 			})
 		} */
-    console.log('params', params)
-    console.log('type', type)
     // @ts-expect-error
     getIO().emit(type, params)
   } catch (error) {

@@ -1,6 +1,7 @@
 import { Types } from 'mongoose'
 import { User } from '../interfaces/auth.interface'
 import UserModel from '../models/user.model'
+import { encrypt } from '../utils/bcrypt.handle';
 
 interface UserResponse {
   nickname: string;
@@ -43,10 +44,33 @@ const getUser = async (id: Types.ObjectId): Promise<UserResponse | null> => {
   }
 }
 
-const updateUser = async (id: Types.ObjectId, item: User): Promise<any> => {
-  const response: any = await UserModel.findByIdAndUpdate(id, item, { new: true }).populate('role')
-  const user = { ...response?._doc, password: undefined, nameRole: response?.role?.name, role: response?.role?._id, isActive: response?.isActive }
-  return user
+const updateUser = async (id: Types.ObjectId, item: Partial<User>): Promise<any> => {
+  let updateData = { ...item };
+  
+  if (item.password && item.password !== '') {
+    updateData.password = await encrypt(item.password);
+  } else {
+    const { password, ...updateDataWithoutPassword } = updateData;
+    updateData = updateDataWithoutPassword;
+  }
+
+  const response: any = await UserModel.findByIdAndUpdate(
+    id, 
+    updateData, 
+    { new: true }
+  ).populate('role');
+
+  if (!response) return null;
+
+  const user = {
+    ...response._doc,
+    password: undefined, // Nunca devolvemos la contraseña
+    nameRole: response.role?.name,
+    role: response.role?._id,
+    isActive: response.isActive
+  };
+
+  return user;
 }
 
 const deleteUser = async (id: Types.ObjectId): Promise<any> => {

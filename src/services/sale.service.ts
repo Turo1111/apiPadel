@@ -45,7 +45,6 @@ const getSales = async (input: string): Promise<Sale[]> => {
     $sort: { createdAt: -1 }
   }
   ])
-  console.log(response)
   return response
 }
 
@@ -84,7 +83,6 @@ const getSale = async (id: Types.ObjectId): Promise<Sale[]> => {
 }
 
 const updateSale = async (id: Types.ObjectId, sale: Sale): Promise<any> => {
-  console.log('service', sale)
   const response = await SaleModel.updateOne({ _id: id }, { $set: sale })
   return response
 }

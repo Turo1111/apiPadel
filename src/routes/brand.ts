@@ -5,10 +5,10 @@ import { checkJwt } from '../middleware/session'
 
 const router = Router()
 
-router.get('/', checkJwt, checkPermission('read_brand'), getBrandsCtrl)
-router.get('/:id', checkJwt, checkPermission('read_brand'), getBrandCtrl)
-router.post('/', checkJwt, checkPermission('create_brand'), createBrandCtrl)
-router.patch('/:id', checkJwt, checkPermission('update_brand'), updateBrandCtrl)
-router.delete('/:id', checkJwt, checkPermission('delete_brand'), deleteBrandCtrl)
+router.get('/', checkJwt, checkPermission('read_product'), getBrandsCtrl)
+router.get('/:id', checkJwt, checkPermission('read_product'), getBrandCtrl)
+router.post('/', checkJwt, checkPermission('create_product'), createBrandCtrl)
+router.patch('/:id', checkJwt, checkPermission('update_product'), updateBrandCtrl)
+router.delete('/:id', checkJwt, checkPermission('delete_product'), deleteBrandCtrl)
 
 export { router }

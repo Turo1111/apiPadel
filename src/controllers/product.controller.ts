@@ -146,7 +146,6 @@ const postItem = async ({ body }: Request, res: Response): Promise<void> => {
     })
     res.send(response)
   } catch (e) {
-    console.log(e)
     handleHttp(res, 'ERROR_POST_ITEM: FALTAN CAMPOS REQUERIDOS', e)
   }
 }
@@ -185,7 +184,6 @@ const printList = async ({ body }: RequestExt, res: Response): Promise<void> => 
   try {
     const { categories} = body
     const products = await getAllProductsCategories(categories)
-    console.log(products)
     if (products.length === 0) {
       res.status(404).send('Products not found')
       return

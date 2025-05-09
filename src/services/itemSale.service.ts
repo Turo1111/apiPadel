@@ -3,7 +3,6 @@ import ItemSaleModel from '../models/itemSale.model'
 import { ItemSale } from '../interfaces/sale.interface'
 
 const insertItemSale = async (item: ItemSale): Promise<ItemSale> => {
-  console.log("insert item sale",item)
   const responseInsert = await ItemSaleModel.create(item)
   return responseInsert
 }
@@ -72,7 +71,6 @@ const getItemSale = async (id: Types.ObjectId): Promise<any> => {
 }
 
 const updateItemsSale = async (id: Types.ObjectId, item: Partial<ItemSale>): Promise<any> => {
-  console.log('update item sale', item, id)
   const response = await ItemSaleModel.updateOne({ _id: id }, { $set: item })
   return response
 }

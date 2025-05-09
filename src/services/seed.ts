@@ -6,42 +6,42 @@ import { encrypt } from '../utils/bcrypt.handle';
 export const seedDatabase = async () => {
   // Crear permisos básicos
   const permissions = [
-    //Usuarios  
+    //Usuarios  x
     'create_user',
     'delete_user',
     'update_user',
     'read_user',
-    //Roles
+    //Roles x
     'create_role',
     'delete_role',
     'update_role',
     'read_role',
-    //Productos 
+    //Productos x
     'create_product',
     'delete_product',
     'update_product',
     'read_product',
-    //Proveedores
+    //Proveedores x
     'create_provider',
     'delete_provider',
     'update_provider',
     'read_provider',
-    //Marcas
+    //Marcas x
     'create_brand',
     'delete_brand',
     'update_brand',
     'read_brand',
-    //Categorias
+    //Categorias x
     'create_categorie',
     'delete_categorie',
     'update_categorie',
     'read_categorie',
-    //Clientes
+    //Clientes x
     'create_client',
     'delete_client',
     'update_client',
     'read_client',
-    //Ventas
+    //Ventas x
     'create_sale',
     'delete_sale',
     'update_sale',
